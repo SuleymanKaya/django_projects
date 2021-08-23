@@ -1,3 +1,4 @@
 # Git tarafından takip edilmesini istemediğimiz dosyalar buraya yazılır.
 db.sqlite3
 .vscode
+yazi_resimleri
