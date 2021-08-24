@@ -2,7 +2,7 @@ from enum import unique
 from django.db import models
 from autoslug import AutoSlugField
 from blog.models import KategoriModel
-from django.contrib.auth.models import User
+from account.models import CustomUserModel
 from ckeditor.fields import RichTextField
 
 class YazilarModel(models.Model):
@@ -13,7 +13,7 @@ class YazilarModel(models.Model):
     duzenleme_tarihi = models.DateTimeField(auto_now=True)
     slug = AutoSlugField(populate_from="baslik", unique=True)
     kategoriler = models.ManyToManyField(KategoriModel, related_name="yazi")
-    yazar = models.ForeignKey(User, on_delete=models.CASCADE, related_name="yazilar")
+    yazar = models.ForeignKey(CustomUserModel, on_delete=models.CASCADE, related_name="yazilar")
 
     class Meta:
         verbose_name = "Yazi"
