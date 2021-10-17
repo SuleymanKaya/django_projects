@@ -1,12 +1,19 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
 
-{% block title %} İletişim {% endblock %}
+{% block title %} İletişim Sayfası {% endblock %}
 
 {% block content %} 
 
-İLETİŞİM
-
-    {{ key | truncatechars:3 }}
-
-
+    <form method="POST">
+        {% csrf_token %}
+        <!-- {{ form.as_p }} -->
+        {{ form | crispy }}
+        {{ form.email.errors }}
+        {{ form.isim_soyad.errors }}
+        {{ form.mesaj.errors }}
+        {{ form.non_field_errors }}
+        <input type="submit" class="btn btn-success mt-3 mb-3" value="Gönder" /> 
+    </form>
+    
 {% endblock %}
