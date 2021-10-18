@@ -2,4 +2,8 @@ from .anasayfa import anasayfa
 from .iletisim import iletisim
 from .kategori import kategori
 from .yazilarim import yazilarim
-from .detay import detay 
+from .detay import detay
+from .yaziEkle import yaziEkle
+from .yaziGuncelle import yaziGuncelle
+from .yaziSil import yaziSil
+from .yorumSil import yorumSil

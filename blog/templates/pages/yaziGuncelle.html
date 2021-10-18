@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+
+{% block title %} Yazı Güncelleme Sayfası {% endblock %}
+
+{% block content %} 
+
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ form.media }} <!-- içerikteki ckeditörün çalışması için -->
+        <!-- {{ form.as_p }} -->
+        {{ form | crispy }}
+        {{ form.email.errors }}
+        {{ form.isim_soyad.errors }}
+        {{ form.mesaj.errors }}
+        {{ form.non_field_errors }}
+        <input type="submit" class="btn btn-success mt-3 mb-3" value="Yazıyı Güncelle" /> 
+    </form>
+    
+{% endblock %}

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %} 
 
 {% load static %} 
 
@@ -15,9 +16,17 @@
         <div class="card-body">
           <h5 class="card-title">{{yazi.baslik}}</h5>
           <p class="card-text">{{ yazi.icerik | safe }}</p>
-          <p class="card-text"><small class="text-muted">{{yazi.olusturma_tarihi}} | 
+          <p class="card-text">
+            <small class="text-muted">{{yazi.olusturma_tarihi}} | 
             Son Güncelleme: {{yazi.duzenleme_tarihi | timesince }}, {{yazi.yazar}}
-          </small></p>
+            </small> 
+            {% if request.user == yazi.yazar %}
+              <p> 
+                <a class="btn btn-primary" href="{% url 'yaziGuncelle' slug=yazi.slug %}"> Güncelle </a>
+                <a class="btn btn-danger" href="{% url 'yaziSil' slug=yazi.slug %}"> Sil </a>  
+              </p>
+            {% endif %}
+          </p>
         </div>
       </div>
     </div>
@@ -25,23 +34,49 @@
  
 <h5>Yorumlar</h5>
 
+{% if request.user.is_authenticated %}
+<form method="POST">
+  {% csrf_token %}
+  {{ yorumEkle_form|crispy }}
+  <input type="submit" class="btn btn-success mt-3 mb-3" value="Yorum Ekle" /> 
+</form>
+{% else %}
+<p> Yorum yapmak için lütfen sisteme giriş yapınız </p>
+{% endif %}
+
+{% if messages %}
+<div class="alert alert-secondary" role="alert">
+  {% for message in messages %}
+    {{ message }}
+  {% endfor %}  
+</div>
+{% endif %}
+
 {% for yorum in yorumlar %}
   <div class="container">
       <div class="row">
           <div class="col-md-10">
               <div class="comment mt-4 text-justify float-left">
+
                 {% if yorum.yazan.avatar %} 
                   <img src="{{ yorum.yazan.avatar.url }}" alt="" class="rounded-circle" width="40" height="40">
                 {% else %}
                   <img src="{% static 'img/no-avatar.png' %}" alt="" class="rounded-circle" width="40" height="40">
                 {% endif %}
+
                 <h6>{{ yorum.yazan }} - {{yorum.olusturma_tarihi}} </h6> <br>
                 <p>{{yorum.yorum}}</p>
+
+                {% if request.user == yorum.yazan or request.user == yazi.yazar %}
+                  <p> <a class="btn btn-danger btn-sm" href="{% url 'yorumSil' id=yorum.id %}"> Yorumu Sil </a> </p>
+                {% endif %}
+
               </div>
           </div>
       </div>
   </div>
 {% empty %}
+  <br>
   <p>Bu Yazıya Henüz Yorum Yapılmamıştır.</p>
 {% endfor %}
 

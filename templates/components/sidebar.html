@@ -6,11 +6,11 @@
     <ul class="list-group list-group-flush">
         <li class="list-group-item">Profili Düzenle</li>
         <li class="list-group-item">Şifre Değiştir</li>
-        <li class="list-group-item">Yazı Ekle</li>
+        <li class="list-group-item"><a href="{% url 'yaziEkle' %}">Yazı Ekle</a></li>
         <li class="list-group-item"> <a href="{% url 'yazilarim' %}" >Yazilarim</a></li>
         <li class="list-group-item">Çıkış Yap</li>
     </ul>
     {% else %}
-    Buraya Login Ekranı Gelecek!
+    <p> Buraya Login Ekranı Gelecek! </p>
     {% endif %}
 </div>
