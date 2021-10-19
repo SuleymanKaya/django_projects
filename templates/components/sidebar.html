@@ -4,13 +4,19 @@
     Menü
     </div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">Profili Düzenle</li>
-        <li class="list-group-item">Şifre Değiştir</li>
-        <li class="list-group-item"><a href="{% url 'yaziEkle' %}">Yazı Ekle</a></li>
-        <li class="list-group-item"> <a href="{% url 'yazilarim' %}" >Yazilarim</a></li>
-        <li class="list-group-item">Çıkış Yap</li>
+        <li class="list-group-item"><a href="{% url 'profilGuncelle' %}"> Profili Düzenle </a></li>
+        <li class="list-group-item"><a href="{% url 'sifreDegistirme' %}"> Şifre Değiştir </a></li>
+        <li class="list-group-item"><a href="{% url 'yaziEkle' %}"> Yazı Ekle </a></li>
+        <li class="list-group-item"> <a href="{% url 'yazilarim' %}"> Yazilarim </a></li>
+        <li class="list-group-item"><a href="{% url 'cikis' %}"> Çıkış Yap </a></li>
     </ul>
     {% else %}
-    <p> Buraya Login Ekranı Gelecek! </p>
+    <div class="card-header">
+    Bize Katıl
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a href="{% url 'giris' %}" class="btn btn-primary" role="button"> Giriş Yap </a></li>
+        <li class="list-group-item"><a href="{% url 'kayit' %}" class="btn btn-success" role="button"> Yeni Hesap Oluştur </a></li>
+    </ul>
     {% endif %}
 </div>

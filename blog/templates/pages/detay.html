@@ -44,13 +44,7 @@
 <p> Yorum yapmak için lütfen sisteme giriş yapınız </p>
 {% endif %}
 
-{% if messages %}
-<div class="alert alert-secondary" role="alert">
-  {% for message in messages %}
-    {{ message }}
-  {% endfor %}  
-</div>
-{% endif %}
+{% include 'components/message.html' %}
 
 {% for yorum in yorumlar %}
   <div class="container">

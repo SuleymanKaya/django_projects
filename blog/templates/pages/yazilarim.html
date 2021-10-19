@@ -27,7 +27,9 @@
                 </td>
             </tr>
         {% empty %}
-            <p> Sistemde Hiç Bir Yazı Bulunamadı! </p>
+        <div class="alert alert-warning" role="alert">
+          <p> Hiçbir yazınız bulunmamaktadır! </p>
+        </div>
         {% endfor%}
     </tbody>
   </table>
