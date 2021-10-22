@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+
+{% block title %} Yazı Silme Onay Sayfası {% endblock %}
+
+{% block content %} 
+
+    <form method="POST">
+        {% csrf_token %}
+        <p> "{{ yazi_object.baslik }}" yazısını silmek istediğinize emin misiniz? </p>
+        <input type="submit" class="btn btn-success mt-3 mb-3" value="Evet" /> 
+    </form>
+    
+{% endblock %}

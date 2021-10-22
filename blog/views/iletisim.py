@@ -1,7 +1,17 @@
-from django.shortcuts import render, redirect
+#from django.shortcuts import render, redirect
+#from blog.models import IletisimModel
 from blog.forms import IletisimForm
-from blog.models import IletisimModel
+from django.views.generic import FormView
 
+class IletisimFormView(FormView):
+    template_name = "pages/iletisim.html"
+    form_class = IletisimForm
+    success_url = "iletisim/emailGonderildi"
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+"""
 def iletisim(request):
     # data yerine initial yazılırsa alınan değerlerin validasyonu yapılmaz.
     form = IletisimForm(data={
@@ -23,3 +33,4 @@ def iletisim(request):
     return render(request, 'pages/iletisim.html', context={
         'form': form
     })
+"""

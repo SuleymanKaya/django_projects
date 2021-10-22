@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %} Yazar Profil Sayfası {% endblock %}
+
+{% block content %} 
+
+{% if profil.avatar %} 
+<img src="{{ profil.avatar.url }}" alt=""  width="100" height="100">
+{% else %}
+<img src="{% static 'img/no-avatar.png' %}" alt="" width="100" height="100">
+{% endif %}
+
+<br>
+Yazar: {{ profil.get_full_name }}
+    
+{% endblock %}

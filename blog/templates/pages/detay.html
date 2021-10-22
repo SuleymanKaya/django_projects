@@ -18,7 +18,9 @@
           <p class="card-text">{{ yazi.icerik | safe }}</p>
           <p class="card-text">
             <small class="text-muted">{{yazi.olusturma_tarihi}} | 
-            Son Güncelleme: {{yazi.duzenleme_tarihi | timesince }}, {{yazi.yazar}}
+            Son Güncelleme: {{yazi.duzenleme_tarihi | timesince }}
+            <br>
+            Yazar: <a href="{% url 'profil' username=yazi.yazar.username %}" > {{yazi.yazar.get_full_name}} </a> 
             </small> 
             {% if request.user == yazi.yazar %}
               <p> 

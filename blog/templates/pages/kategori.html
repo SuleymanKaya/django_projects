@@ -27,14 +27,15 @@
 {% empty %}
   <p> Sistemde Hiç Bir Yazı Bulunamadı! </p>
 
-{% endfor%}
+{% endfor %}
 <!-- -->
+
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-end">
     
-    {% if yazilar.has_previous %}
+    {% if page_obj.has_previous %}
     <li class="page-item">
-      <a class="page-link" href="?sayfa={{ yazilar.previous_page_number }}">Önceki Sayfa</a>
+      <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Önceki Sayfa</a>
     </li>
     {% else %}
     <li class="page-item disabled">
@@ -42,18 +43,19 @@
     </li>
     {% endif %}
     
-    <li class="page-item"><a class="page-link" href="#">{{yazilar.number}}</a></li>
+    <li class="page-item"><a class="page-link" href="#">{{page_obj.number}}</a></li>
     
-    {% if yazilar.has_next %}
+    {% if page_obj.has_next %}
     <li class="page-item">
-      <a class="page-link" href="?sayfa={{ yazilar.next_page_number }}">Sonraki Sayfa</a>
+      <a class="page-link" href="?page={{ page_obj.next_page_number }}">Sonraki Sayfa</a>
     </li>
     {%else%}
     <li class="page-item">
-      <a class="page-link" href="?sayfa=1">Başa Dön</a>
+      <a class="page-link" href="?page=1">Başa Dön</a>
     </li>
     {% endif %}
 
   </ul>
 </nav>
+
 {% endblock %}
