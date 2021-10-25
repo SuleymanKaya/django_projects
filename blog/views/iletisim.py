@@ -6,11 +6,13 @@ from django.views.generic import FormView
 class IletisimFormView(FormView):
     template_name = "pages/iletisim.html"
     form_class = IletisimForm
-    success_url = "iletisim/emailGonderildi"
+    success_url = "emailGonderildi"
 
     def form_valid(self, form):
         form.save()
+        form.send_email(mesaj = form.cleaned_data.get('mesaj'))
         return super().form_valid(form)
+
 """
 def iletisim(request):
     # data yerine initial yazılırsa alınan değerlerin validasyonu yapılmaz.

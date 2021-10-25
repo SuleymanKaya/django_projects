@@ -17,10 +17,7 @@ urlpatterns = [
     path('yaziGuncelle/<slug:slug>', YaziGuncelleUpdateView.as_view(), name='yaziGuncelle'),
     path('yaziSil/<slug:slug>',YaziSilDeleteView.as_view(), name='yaziSil'),
     path('yorumSil/<int:id>', yorumSil, name='yorumSil'),
-    path('hakkimda', TemplateView.as_view(
-        template_name = 'pages/hakkimda.html'
-    ), name='hakkimda'),
-    path('googleYonlendir', RedirectView.as_view(
-        url='https://www.google.com'
-    ), name='googleYonlendir')    
+    path('hakkimda', TemplateView.as_view(template_name = 'pages/hakkimda.html'), name='hakkimda'),
+    path('googleYonlendir', RedirectView.as_view( url='https://www.google.com'), name='googleYonlendir'),
+    path('emailGonderildi', TemplateView.as_view(template_name = 'pages/emailGonderildi.html'), name='emailGonderildi')
 ]
