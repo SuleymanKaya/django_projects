@@ -1,9 +1,12 @@
-from django.shortcuts import render, get_object_or_404, redirect
 # from blog.forms import yorumEkle
+from django.shortcuts import render, get_object_or_404, redirect
 from blog.models import YazilarModel
 from blog.forms import YorumEkleModelForm
 from django.views import View
 from django.contrib import messages
+import logging
+
+logger = logging.getLogger('yazi_okuma')
 
 class DetayView(View):
     http_method_names = ['get', 'post']
@@ -12,6 +15,9 @@ class DetayView(View):
     def get(self, request, slug):
         yazi = get_object_or_404(YazilarModel, slug=slug)
         yorumlar = yazi.yorumlar.all()
+        
+        if request.user.is_authenticated:
+            logger.info('yazi_okundu: ' + request.user.username)
 
         return render(request, 'pages/detay.html', context={
             'yazi': yazi,

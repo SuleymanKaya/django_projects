@@ -17,7 +17,6 @@ import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -27,9 +26,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +40,8 @@ INSTALLED_APPS = [
     'account',
     #Third Party App
     'crispy_forms',
+    #Third Party App
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -116,3 +115,39 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'skx.suleymankaya3@gmail.com'
 DEFAULT_FROM_EMAIL = 'skx.suleymankaya3@gmail.com'
 EMAIL_HOST_PASSWORD = env('GMAIL_PASSWORD')
+
+# logger Ayarları Yapılandırma
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'file':{
+            'class': 'logging.FileHandler',
+            'filename':'logs/yazi_okuma.log',
+            'formatter': 'verbose'
+        }
+    },
+    'loggers': {
+        'yazi_okuma': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO'
+        }
+    }
+}
+
+
+
