@@ -67,3 +67,12 @@ STATICFILES_STORAGE =  'storages.backends.s3boto3.S3Boto3Storage'
 # 2. Gelen soruyu 'yes' deyip onaylıyoruz ve Bucket'a gönderim işlemimiz tamamlanmış oluyor.
 
 DEFAULT_FILE_STORAGE = 'config.storage_backend.MediaStorage'
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 86400
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
