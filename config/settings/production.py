@@ -2,7 +2,7 @@ from .base import *
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-ALLOWED_HOSTS = ['127.0.0.1', '3.122.113.228', 'www.blogsuleymandjango.com', 'blogsuleymandjango.com']
+ALLOWED_HOSTS = ['127.0.0.1', '3.122.113.228', 'ec2-3-122-113-228.eu-central-1.compute.amazonaws.com']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
