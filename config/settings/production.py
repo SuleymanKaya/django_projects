@@ -2,7 +2,7 @@ from .base import *
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-ALLOWED_HOSTS = ['www.blogsuleymandjango.com', 'blogsuleymandjango.com', '127.0.0.1', '3.122.113.228']
+ALLOWED_HOSTS = ['127.0.0.1', '3.122.113.228', 'www.blogsuleymandjango.com', 'blogsuleymandjango.com']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -38,9 +38,7 @@ DATABASES = {
         'PASSWORD': env('DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5432',
-
     }
-
 }
 
 # Log Alma İşlemleri için Sentry Kurulumu
