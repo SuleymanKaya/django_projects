@@ -14,7 +14,7 @@ sentry-sdk = "*"
 boto3 = "*"
 django-storages = "*"
 psycopg2-binary = "*"
-gunicorn = "==20.0.2"
+gunicorn = "*"
 
 [dev-packages]
 
