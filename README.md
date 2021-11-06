@@ -1,4 +1,4 @@
-# To-Do List Application Project Using Django with Python
+# To-Do List Application Project
 
 In this project I created a basic To-Do application using the Django framework.
 
