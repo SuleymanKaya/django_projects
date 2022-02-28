@@ -5,7 +5,12 @@ from post.models import PostModel
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostModel
-        fields = ['title', 'content', 'created', 'slug', 'image']
+        fields = ['user','title', 'content', 'created', 'slug', 'image']
+
+class PostUpdateCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PostModel
+        fields = ['title', 'content', 'image']
 
 # Serializer kullanımı
 #class PostSerializer(serializers.Serializer):
