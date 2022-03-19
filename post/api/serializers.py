@@ -3,9 +3,17 @@ from post.models import PostModel
 
 # ModelSerializer kullanımı
 class PostSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='post:detail',
+        lookup_field='slug'
+    )
+    username = serializers.SerializerMethodField()
     class Meta:
         model = PostModel
-        fields = ['user','title', 'content', 'created', 'slug', 'image', 'modified_by']
+        fields = ['username','title', 'content', 'created', 'url', 'image', 'modified_by']
+
+    def get_username(self, obj):
+        return str(obj.user.username)
 
 class PostUpdateCreateSerializer(serializers.ModelSerializer):
     class Meta:

@@ -20,7 +20,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('post/api/', include('post.api.urls')),
+    path('post/api/', include('post.api.urls', namespace='post')),
+    path('comment/api/', include('comment.api.urls', namespace='comment')),
 ]
 
 if settings.DEBUG:

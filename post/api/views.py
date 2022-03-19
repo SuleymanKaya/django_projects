@@ -5,6 +5,7 @@ from rest_framework.generics import (DestroyAPIView,
                                     CreateAPIView)
 from rest_framework.permissions import (IsAuthenticated)
 from rest_framework.filters import SearchFilter, OrderingFilter
+from post.api.paginations import PostPagination
 from post.api.permissions import IsOwner
 from post.models import PostModel
 from post.api.serializers import PostSerializer, PostUpdateCreateSerializer
@@ -13,6 +14,7 @@ class PostListAPIView(ListAPIView):
     serializer_class = PostSerializer
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['title', 'content']
+    pagination_class = PostPagination
 
     def get_queryset(self):
         queryset = PostModel.objects.filter(draft=False)
