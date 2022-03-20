@@ -1,4 +1,3 @@
-from unicodedata import name
 from django.urls import path
 from comment.api.views import CommentCreateAPIView, CommentListAPIView, CommentDeleteAPIView, CommentUpdateAPIView
 
