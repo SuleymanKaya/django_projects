@@ -1,6 +1,8 @@
-from rest_framework.generics import ListCreateAPIView
+from cgitb import lookup
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from favorite.api.paginations import FavoritePagination
-from favorite.api.serializers import FavoriteListCreateAPISerializer
+from favorite.api.permissions import IsOwner
+from favorite.api.serializers import FavoriteListCreateAPISerializer, FavoriteAPISerializer
 from favorite.models import FavoriteModel
 
 class FavoriteListCreateAPIView(ListCreateAPIView):
@@ -16,3 +18,12 @@ class FavoriteListCreateAPIView(ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
         return serializer
+
+# RetrieveUpdateAPIView
+# RetrieveDestroyAPIView
+class FavoriteAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = FavoriteModel.objects.all()
+    serializer_class = FavoriteAPISerializer
+    pagination_class = FavoritePagination
+    lookup_field = 'pk'
+    permission_classes = [IsOwner]

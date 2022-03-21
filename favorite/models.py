@@ -9,5 +9,5 @@ class FavoriteModel(models.Model):
     content = models.TextField()
 
     def __str__(self):
-        return str(self.user) + ' ' + str(self.post)
+        return str(self.id)
 
